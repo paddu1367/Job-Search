@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: job-search-api
+    runtime: docker
+    envVars:
+      - key: APIFY_API_TOKEN
+        sync: false
+
+  - type: web
+    name: n8n
+    runtime: docker
+    dockerCommand: "n8n start"
+    dockerContext: .
+    dockerfilePath: ./Dockerfile.n8n
+    disk:
+      name: n8n-data
+      mountPath: /home/node/.n8n
+      sizeGB: 1
+    envVars:
+      - key: N8N_HOST
+        sync: false
+      - key: N8N_PROTOCOL
+        value: https
+      - key: WEBHOOK_URL
+        sync: false
+      - key: N8N_ENCRYPTION_KEY
+        generateValue: true
