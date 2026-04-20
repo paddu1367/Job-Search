@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(netstat -ano)",
+      "Bash(taskkill //PID 11240 //F)",
+      "Bash(taskkill //IM python.exe //F)"
+    ]
+  }
+}
